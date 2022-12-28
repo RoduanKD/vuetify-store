@@ -1,10 +1,22 @@
 <template>
-  <v-app-bar flat>
+  <v-app-bar color="primary">
     <v-app-bar-title>
-      <v-icon icon="mdi-circle-slice-6" />
-
-      Essentials Preset
+      <v-icon icon="mdi-heart" />
+      Like Card Store
     </v-app-bar-title>
+    <v-btn
+      variant="text"
+      to="/"
+      exact
+    >
+      Home
+    </v-btn>
+    <v-btn
+      variant="text"
+      to="/products"
+    >
+      Explore Products
+    </v-btn>
   </v-app-bar>
 </template>
 
