@@ -15,6 +15,10 @@ export default defineStore('cart', {
   actions: {
     addToCart(product) {
       this.items.push(product)
+    },
+
+    removeFromCart(index) {
+      this.items.splice(index, 1)
     }
   }
 })
