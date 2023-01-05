@@ -20,6 +20,22 @@
       Explore Products
     </v-btn>
     <v-btn
+      v-if="isLoggedIn"
+      variant="text"
+      to="/profile"
+      stacked
+    >
+      {{ user.firstName }}
+    </v-btn>
+    <v-btn
+      v-else
+      variant="text"
+      to="/login"
+      stacked
+    >
+      Login
+    </v-btn>
+    <v-btn
       variant="text"
       to="/cart"
       stacked
@@ -38,10 +54,12 @@
 <script>
 import { mapState } from 'pinia'
 import cart from '@/store/cart';
+import user from '@/store/user';
 
 export default {
   computed: {
-    ...mapState(cart, ['itemsCount'])
+    ...mapState(cart, ['itemsCount']),
+    ...mapState(user, ['isLoggedIn', 'user']),
   }
 }
 </script>
