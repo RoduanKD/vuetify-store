@@ -10,7 +10,7 @@ import vuetify from './vuetify'
 import pinia from '../store'
 import router from '../router'
 import { VueAxios, axios } from './axios'
-import i18n from './i18n'
+import i18n from '../i18n'
 
 export function registerPlugins (app) {
   loadFonts()

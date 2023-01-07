@@ -1,5 +1,6 @@
 <template>
-  <h2>Our Features</h2>
+  <h2>{{ $t('featuresSection.title') }}</h2>
+  <p>{{ $t('featuresSection.body') }}</p>
 </template>
 
 <script>

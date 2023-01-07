@@ -1,5 +1,5 @@
 <template>
-  <h2>Our Team</h2>
+  <h2>{{ $t('Our Team') }}</h2>
 </template>
 
 <script>
