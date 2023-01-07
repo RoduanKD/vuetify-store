@@ -5,6 +5,7 @@
     <v-card-actions>
       <v-btn
         color="primary"
+        :disabled="!isLoggedIn"
         @click="addToCart({id, title, price, image, category})"
       >
         <v-icon>mdi-cart</v-icon> Add to cart
@@ -14,8 +15,9 @@
 </template>
 
 <script>
-import { mapActions } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 import CartStore from '@/store/cart.js'
+import user from '@/store/user';
 
 export default {
   props: {
@@ -47,6 +49,10 @@ export default {
       type: Object,
       required: true
     },
+  },
+
+  computed: {
+    ...mapState(user, ['isLoggedIn'])
   },
 
   methods: {

@@ -19,9 +19,6 @@ const routes = [
         path: '/products',
         name: 'Products',
         component: () => import(/* webpackChunkName: "products" */ '@/views/ProductsView.vue'),
-        meta: {
-          guard: 'auth'
-        }
       },
       {
         path: '/cart',
