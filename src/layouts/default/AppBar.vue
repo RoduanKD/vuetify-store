@@ -64,6 +64,13 @@
     >
       <v-icon>mdi-theme-light-dark</v-icon>
     </v-btn>
+    <v-btn
+      variant="text"
+      stacked
+      @click="toggleLocale"
+    >
+      <v-icon>{{ $i18n.locale === 'en' ? 'mdi-abjad-arabic' : 'mdi-alpha-e' }}</v-icon>
+    </v-btn>
   </v-app-bar>
 </template>
 
@@ -89,6 +96,11 @@ export default {
   },
   methods: {
     ...mapActions(user, ['logout']),
+
+    toggleLocale() {
+      this.$i18n.locale = this.$i18n.locale === 'ar' ? 'en' : 'ar'
+      this.$vuetify.locale.current = this.$vuetify.locale.current === 'ar' ? 'en' : 'ar'
+    }
   }
 }
 </script>
