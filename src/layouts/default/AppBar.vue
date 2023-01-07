@@ -57,21 +57,38 @@
         <v-icon>mdi-cart</v-icon>
       </v-badge>
     </v-btn>
+    <v-btn
+      variant="text"
+      stacked
+      @click="toggleTheme"
+    >
+      <v-icon>mdi-theme-light-dark</v-icon>
+    </v-btn>
   </v-app-bar>
 </template>
 
 <script>
+import { useTheme } from 'vuetify'
 import { mapActions, mapState } from 'pinia'
 import cart from '@/store/cart';
 import user from '@/store/user';
 
 export default {
+  setup() {
+    const theme = useTheme()
+
+    return {
+      theme,
+      toggleTheme: () => theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+    }
+  },
+
   computed: {
     ...mapState(cart, ['itemsCount']),
     ...mapState(user, ['isLoggedIn', 'user']),
   },
   methods: {
-    ...mapActions(user, ['logout'])
+    ...mapActions(user, ['logout']),
   }
 }
 </script>
