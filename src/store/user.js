@@ -1,4 +1,5 @@
 // Utilities
+import { axios } from '@/plugins/axios'
 import { defineStore } from 'pinia'
 
 export default defineStore('user', {
@@ -16,20 +17,19 @@ export default defineStore('user', {
 
   actions: {
     login(username, password) {
-      fetch('https://dummyjson.com/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+      axios.post('https://dummyjson.com/auth/login', {
           username: username,
           password: password,
           // expiresInMins: 60, // optional
-        })
       })
-        .then(res => res.json())
-        .then(user => this.user = user);
+        .then(res => {
+          this.user = res.data
+          axios.defaults.headers.common.Authorization = 'Bearer ' + this.user.token
+        });
     },
     logout() {
       this.user = {}
+      delete axios.defaults.headers.common.Authorization
     }
   }
 })

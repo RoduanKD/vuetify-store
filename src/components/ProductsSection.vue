@@ -33,9 +33,8 @@ export default {
   },
   methods: {
     loadProducts() {
-      fetch("https://fakestoreapi.com/products")
-        .then(res => res.json())
-        .then(products => this.products = products);
+      this.axios.get('https://fakestoreapi.com/products')
+        .then(response => this.products = response.data)
     }
   }
 }

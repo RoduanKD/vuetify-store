@@ -28,6 +28,15 @@
       {{ user.firstName }}
     </v-btn>
     <v-btn
+      v-if="isLoggedIn"
+      variant="text"
+      stacked
+      to="/"
+      @click="logout"
+    >
+      Logout
+    </v-btn>
+    <v-btn
       v-else
       variant="text"
       to="/login"
@@ -52,7 +61,7 @@
 </template>
 
 <script>
-import { mapState } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 import cart from '@/store/cart';
 import user from '@/store/user';
 
@@ -60,6 +69,9 @@ export default {
   computed: {
     ...mapState(cart, ['itemsCount']),
     ...mapState(user, ['isLoggedIn', 'user']),
+  },
+  methods: {
+    ...mapActions(user, ['logout'])
   }
 }
 </script>

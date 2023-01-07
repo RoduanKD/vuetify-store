@@ -3,9 +3,9 @@
 </template>
 
 <script>
-import axios from 'axios'
 import { mapState } from 'pinia';
 import user from '@/store/user';
+
 export default {
   data: () => ({
     userInfo: {},
@@ -14,11 +14,7 @@ export default {
     ...mapState(user, ['user'])
   },
   created() {
-    axios.get('https://dummyjson.com/users/' + this.user.id, {
-      headers: {
-        Authorization: 'Bearer ' + this.user.token
-      },
-    })
+    this.axios.get('https://dummyjson.com/users/' + this.user.id)
       .then(response => {
         this.userInfo = response.data
       })
