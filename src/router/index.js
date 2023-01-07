@@ -33,22 +33,14 @@ const routes = [
           guard: 'auth'
         }
       },
-      {
-        path: '/login',
-        name: 'Login',
-        component: () => import(/* webpackChunkName: "login" */ '@/views/LoginView.vue'),
-        meta: {
-          guard: 'public'
-        },
-      },
     ],
   },
   {
-    path: '/',
+    path: '/auth',
     component: () => import('@/layouts/appbar-free/AppBarFree.vue'),
     children: [
       {
-        path: '/login',
+        path: 'login',
         name: 'Login',
         component: () => import(/* webpackChunkName: "login" */ '@/views/LoginView.vue'),
         meta: {
