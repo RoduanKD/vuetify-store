@@ -26,14 +26,6 @@ const routes = [
         component: () => import(/* webpackChunkName: "cart" */ '@/views/CartView.vue'),
       },
       {
-        path: '/login',
-        name: 'Login',
-        component: () => import(/* webpackChunkName: "login" */ '@/views/LoginView.vue'),
-        meta: {
-          guard: 'public'
-        },
-      },
-      {
         path: '/profile',
         name: 'Profile',
         component: () => import(/* webpackChunkName: "profile" */ '@/views/ProfileView.vue'),
@@ -41,7 +33,29 @@ const routes = [
           guard: 'auth'
         }
       },
+      {
+        path: '/login',
+        name: 'Login',
+        component: () => import(/* webpackChunkName: "login" */ '@/views/LoginView.vue'),
+        meta: {
+          guard: 'public'
+        },
+      },
     ],
+  },
+  {
+    path: '/',
+    component: () => import('@/layouts/appbar-free/AppBarFree.vue'),
+    children: [
+      {
+        path: '/login',
+        name: 'Login',
+        component: () => import(/* webpackChunkName: "login" */ '@/views/LoginView.vue'),
+        meta: {
+          guard: 'public'
+        },
+      },
+    ]
   },
 ]
 
